@@ -11,7 +11,11 @@ possible solution but not in the same file for ease of use
 
 12/15:	Setup / Start of project
 		Taking in input from files
+12/16:	Creation of the maze generator
+		Only seems to work for odd numbers
+			Only seems to work for the same odd numbers
 */
+
 #include <fstream>
 #include <iostream>
 #include <stdlib.h>
@@ -46,7 +50,7 @@ void setGridToZero(int xLim, int yLim) {
 int translation(int xPos, int yPos) {
 	// As the field is one dimensional, we need a function that moves it into 2D
 	// This is row width times the current yPos and then adding xPos
-	return yPos * yDim + xPos;
+	return yPos * xDim + xPos;
 }
 
 bool inField(int xPos, int yPos) {
@@ -154,6 +158,8 @@ int main() {
 
 	// Clear the field and show an example
 	setGridToZero(xDim, yDim);
+	//printField(std::cout);
+	//system("pause");
 	goToPosition(1, 1);
 	printField(std::cout);
 
