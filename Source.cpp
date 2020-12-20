@@ -14,6 +14,8 @@ possible solution but not in the same file for ease of use
 12/16:	Creation of the maze generator
 		Only seems to work for odd numbers
 			Only seems to work for the same odd numbers
+12/20:	My house has had some problems with Wifi but 
+			its working for the most part now
 */
 
 #include <fstream>
@@ -148,6 +150,7 @@ int main() {
 			if (inputFromFile.at(currPos) == ' ')
 				inputFromFile.at(currPos) = '_';
 		}
+		inputFromFile += ".txt";
 	}
 	// if the string doesn't have a space then it is a valid filename
 	nameOfFile = inputFromFile;
@@ -158,11 +161,18 @@ int main() {
 
 	// Clear the field and show an example
 	setGridToZero(xDim, yDim);
-	//printField(std::cout);
-	//system("pause");
 	goToPosition(1, 1);
 	printField(std::cout);
 
+	// open output file for the challenge
+	fstream outputFile;
+	outputFile.open(nameOfFile, fstream::out);
+	printField(outputFile);
+
+	// open the file for the challenge answers
+	// Now that we are done with this field, we can find a solution
+
+	outputFile.close();
 	infile.close();
 	return 0;
 }
